@@ -120,7 +120,8 @@ with st.sidebar:
     
     additional_prefs = st.text_area("Additional Preferences", placeholder="e.g., outdoor seating, pet-friendly, quick service")
     
-    top_k = st.number_input("Number of results", min_value=1, max_value=10, value=5)
+    # top_k is now hardcoded to 5 as per user request
+    top_k = 5
 
 # Main logic
 if st.button("Find Best Matches"):
@@ -198,7 +199,7 @@ if st.button("Find Best Matches"):
                     elapsed = round((perf_counter() - started) * 1000, 2)
                     
                     # Display Results
-                    st.success(f"Found {len(results)} matches in {elapsed}ms")
+                    st.success(f"Found {len(results)} matches")
                     
                     for i, res in enumerate(results):
                         with st.container():
