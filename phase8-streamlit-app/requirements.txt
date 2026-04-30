@@ -2,4 +2,3 @@ streamlit
 pandas
 groq
 python-dotenv
-lucide-react-py
