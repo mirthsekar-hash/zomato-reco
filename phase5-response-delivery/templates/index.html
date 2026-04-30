@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phase 5 Response Delivery</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 24px; max-width: 1100px; }
+    h1 { margin-bottom: 8px; }
+    .muted { color: #555; margin-bottom: 16px; }
+    .panel { border: 1px solid #ddd; border-radius: 8px; padding: 12px; margin-bottom: 14px; }
+    .error { color: #b00020; }
+    .card-grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); }
+    .card { border: 1px solid #ddd; border-radius: 8px; padding: 12px; background: #fff; }
+    .rank { font-size: 12px; color: #666; margin-bottom: 6px; }
+    .name { font-size: 18px; margin: 0 0 6px; }
+    .field { font-size: 14px; margin: 4px 0; }
+    .explanation { margin-top: 8px; font-size: 14px; line-height: 1.35; }
+    .meta { font-size: 13px; color: #444; }
+    code { background: #f6f6f6; padding: 2px 5px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <h1>Phase 5: Response Delivery and Presentation</h1>
+  <p class="muted">Recommendation API + response formatter + user-friendly recommendation view.</p>
+
+  <div class="panel meta">
+    <div><strong>Ranked Input:</strong> <code>{{ ranked_path }}</code></div>
+    <div><strong>Candidates Input:</strong> <code>{{ candidates_path }}</code></div>
+    <div><strong>Top K:</strong> <code>{{ top_k }}</code></div>
+  </div>
+
+  {% if error %}
+  <div class="panel error">{{ error }}</div>
+  {% else %}
+    {% if summary_text %}
+    <div class="panel">
+      <strong>AI Summary:</strong> {{ summary_text }}
+    </div>
+    {% endif %}
+
+    <div class="panel meta">
+      <div><strong>Total Results:</strong> {{ meta.total_results }}</div>
+      <div><strong>Generated At (UTC):</strong> {{ meta.generated_at_utc }}</div>
+      <div><strong>Response Time:</strong> {{ meta.response_time_ms }} ms</div>
+    </div>
+
+    <div class="card-grid">
+      {% for card in cards %}
+      <div class="card">
+        <div class="rank">Rank #{{ card.rank }}</div>
+        <h3 class="name">{{ card.restaurant_name }}</h3>
+        <div class="field"><strong>Cuisine:</strong> {{ card.cuisine }}</div>
+        <div class="field"><strong>Rating:</strong> {{ card.rating if card.rating is not none else "N/A" }}</div>
+        <div class="field"><strong>Estimated Cost for Two:</strong> {{ card.estimated_cost_for_two if card.estimated_cost_for_two is not none else "N/A" }}</div>
+        <div class="explanation"><strong>Why recommended:</strong> {{ card.ai_explanation }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+</body>
+</html>
+

@@ -1,0 +1,11 @@
+{
+  "row_count": 12757,
+  "missing_name_count": 0,
+  "missing_location_count": 0,
+  "missing_cuisine_count": 15,
+  "missing_cost_count": 56,
+  "missing_rating_count": 3239,
+  "duplicate_key_count": 0,
+  "invalid_rating_count": 0,
+  "quality_gate_passed": true
+}

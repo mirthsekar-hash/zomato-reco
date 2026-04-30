@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phase 4 LLM Ranking (Groq)</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 24px; max-width: 980px; }
+    .muted { color: #555; }
+    form { display: grid; gap: 10px; margin-top: 16px; }
+    label { font-weight: 600; }
+    input, textarea, select, button {
+      width: 100%; padding: 8px; font-size: 14px; box-sizing: border-box;
+    }
+    textarea { min-height: 70px; resize: vertical; }
+    button { width: auto; cursor: pointer; }
+    .panel { margin-top: 14px; border: 1px solid #ddd; border-radius: 6px; padding: 12px; }
+    .error { color: #b00020; }
+    table { border-collapse: collapse; width: 100%; font-size: 13px; }
+    th, td { border: 1px solid #ddd; padding: 6px; text-align: left; }
+    th { background: #f2f2f2; }
+    pre { background: #f8f8f8; padding: 10px; overflow: auto; }
+  </style>
+</head>
+<body>
+  <h1>Phase 4: LLM Ranking and Explanation (Groq)</h1>
+  <p class="muted">Rank Phase 3 candidates and generate human-like explanations using Groq.</p>
+
+  <form method="post" action="/run">
+    <div>
+      <label for="candidates_path">Candidates JSON Path</label>
+      <input id="candidates_path" name="candidates_path" value="../phase3-candidate-generation/data/candidates.json">
+    </div>
+
+    <div>
+      <label for="model">Groq Model</label>
+      <input id="model" name="model" value="{{ default_model }}">
+    </div>
+
+    <div>
+      <label for="top_k">Top K Recommendations</label>
+      <input id="top_k" name="top_k" type="number" min="1" value="5" required>
+    </div>
+
+    <div>
+      <label for="location">Location</label>
+      <input id="location" name="location" placeholder="bangalore" required>
+    </div>
+
+    <div>
+      <label for="budget">Budget</label>
+      <select id="budget" name="budget" required>
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="cuisine">Cuisine</label>
+      <input id="cuisine" name="cuisine" placeholder="italian, chinese" required>
+    </div>
+
+    <div>
+      <label for="minimum_rating">Minimum Rating (0 to 5)</label>
+      <input id="minimum_rating" name="minimum_rating" type="number" min="0" max="5" step="0.1" value="3.5" required>
+    </div>
+
+    <div>
+      <label for="additional_preferences">Additional Preferences</label>
+      <textarea id="additional_preferences" name="additional_preferences" placeholder="family-friendly, quick service"></textarea>
+    </div>
+
+    <button type="submit">Run Groq Ranking</button>
+  </form>
+
+  {% if errors %}
+  <div class="panel">
+    <h3 class="error">Errors</h3>
+    <ul>
+      {% for error in errors %}
+      <li class="error">{{ error }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  {% if result %}
+  <div class="panel">
+    <h3>Run Result</h3>
+    <pre>{{ result | tojson(indent=2) }}</pre>
+  </div>
+
+  <div class="panel">
+    <h3>Recommendations</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Restaurant</th>
+          <th>Fit Score</th>
+          <th>Explanation</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in result.recommendations %}
+        <tr>
+          <td>{{ row.rank }}</td>
+          <td>{{ row.restaurant_name }}</td>
+          <td>{{ row.fit_score }}</td>
+          <td>{{ row.explanation }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% endif %}
+</body>
+</html>
+

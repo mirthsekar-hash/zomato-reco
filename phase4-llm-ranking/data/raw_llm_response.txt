@@ -1,0 +1,37 @@
+```json
+{
+  "summary": "Based on your preferences, here are the top 5 restaurant recommendations for you.",
+  "recommendations": [
+    {
+      "rank": 1,
+      "restaurant_name": "Blue Berry Restaurant",
+      "fit_score": 8.0,
+      "explanation": "Blue Berry Restaurant is a great fit for your preferences as it is located in Bellandur, serves North Indian, Chinese, and Biryani cuisine, and has a high candidate score of 7.0."
+    },
+    {
+      "rank": 2,
+      "restaurant_name": "Basmati Restaurant",
+      "fit_score": 8.0,
+      "explanation": "Basmati Restaurant is a good fit for your preferences as it is located in Bellandur, serves North Indian, Chinese, and Biryani cuisine, and has a high candidate score of 7.0."
+    },
+    {
+      "rank": 3,
+      "restaurant_name": "Thalassery Restaurant",
+      "fit_score": 7.5,
+      "explanation": "Thalassery Restaurant is a good fit for your preferences as it is located in Bellandur, serves North Indian, Chinese, and Biryani cuisine, and has a high candidate score of 7.0."
+    },
+    {
+      "rank": 4,
+      "restaurant_name": "Punjabi Food Point",
+      "fit_score": 7.5,
+      "explanation": "Punjabi Food Point is a good fit for your preferences as it is located in Bellandur, serves North Indian, Chinese, and Biryani cuisine, and has a high candidate score of 7.0."
+    },
+    {
+      "rank": 5,
+      "restaurant_name": "Hungry Bird",
+      "fit_score": 7.5,
+      "explanation": "Hungry Bird is a good fit for your preferences as it is located in Bellandur, serves North Indian, Chinese, and Biryani cuisine, and has a high candidate score of 7.0."
+    }
+  ]
+}
+```

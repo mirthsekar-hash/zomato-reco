@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#ffdad7",
+                    "surface-dim": "#d9dadb",
+                    "surface-bright": "#f8f9fa",
+                    "secondary-fixed-dim": "#c8c6c5",
+                    "inverse-surface": "#2e3132",
+                    "on-error-container": "#93000a",
+                    "on-surface": "#191c1d",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed": "#221b00",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed-dim": "#e9c400",
+                    "on-tertiary-fixed-variant": "#544600",
+                    "surface-container": "#edeeef",
+                    "secondary-fixed": "#e5e2e1",
+                    "inverse-primary": "#ffb3ae",
+                    "secondary": "#5f5e5e",
+                    "primary": "#b71422",
+                    "tertiary-fixed": "#ffe16d",
+                    "on-background": "#191c1d",
+                    "on-primary-fixed-variant": "#930014",
+                    "on-surface-variant": "#5b403e",
+                    "on-tertiary": "#ffffff",
+                    "inverse-on-surface": "#f0f1f2",
+                    "on-primary-container": "#fffbff",
+                    "error-container": "#ffdad6",
+                    "primary-container": "#db3237",
+                    "on-tertiary-container": "#4b3e00",
+                    "on-error": "#ffffff",
+                    "on-secondary-container": "#636262",
+                    "tertiary": "#705d00",
+                    "error": "#ba1a1a",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed-dim": "#ffb3ae",
+                    "outline-variant": "#e4beba",
+                    "surface-container-high": "#e7e8e9",
+                    "on-secondary-fixed": "#1c1b1b",
+                    "surface-container-highest": "#e1e3e4",
+                    "tertiary-container": "#c8a900",
+                    "on-primary-fixed": "#410004",
+                    "surface-variant": "#e1e3e4",
+                    "surface": "#f8f9fa",
+                    "on-secondary-fixed-variant": "#474746",
+                    "outline": "#8f6f6d",
+                    "background": "#f8f9fa",
+                    "secondary-container": "#e2dfde",
+                    "surface-tint": "#ba1724",
+                    "surface-container-low": "#f3f4f5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "margin-desktop": "40px",
+                    "unit": "8px",
+                    "container-max": "1280px",
+                    "stack-sm": "8px",
+                    "stack-md": "24px",
+                    "margin-mobile": "16px",
+                    "stack-lg": "48px"
+            },
+            "fontFamily": {
+                    "title-sm": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-caps": ["Inter"]
+            },
+            "fontSize": {
+                    "title-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-md": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased min-h-screen">
+<!-- Desktop Navigation Bar -->
+<header class="fixed top-0 left-0 w-full z-50 h-20 bg-white/90 backdrop-blur-xl border-b border-zinc-200/50 flex items-center justify-center">
+<div class="max-w-7xl w-full flex justify-between items-center px-8">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="restaurant">restaurant</span>
+<span class="text-2xl font-black text-red-500 italic tracking-tighter">Reco Partner</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-primary font-semibold flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="explore">explore</span>
+                Discover
+            </a>
+<a class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="favorite">favorite</span>
+                Saved
+            </a>
+<a class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="event_upcoming">event_upcoming</span>
+                Reservations
+            </a>
+<a class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="person">person</span>
+                Profile
+            </a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:bg-surface-container-high transition-colors p-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-container-high transition-colors p-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="tune">tune</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Hero Section with Background -->
+<div class="relative w-full h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">
+<img alt="Premium restaurant interior" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0uh42675-RFLLcc7OLgCYb0A4IERwcVxR-qOxc978eTIH4-Iwru9tBKB7ZGwI3BI1DSZffZMdHF5Y_igZK-nIKNjLq7IL9xQfXpi4z__VVozF0e5-35bW2vhIWb6VtOJDl0skNARCh8tG4vgvBKmW8t2YvPMH1QTQJmcohwMqZ4bqARAvYEfI77w0vQ_VgsreKF2uiN-Rw9CHXwFcskGJ_mny5TkSwicainrzlKQ4n9MSlulAKIL86B0ONdu"/>
+<div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-surface"></div>
+<div class="relative z-10 text-center px-6 max-w-3xl">
+<h1 class="font-display-lg text-white text-5xl md:text-7xl mb-6 drop-shadow-lg">Tailored for You</h1>
+<p class="text-white/90 text-xl md:text-2xl font-medium max-w-2xl mx-auto drop-shadow-md">Tell us your taste, and we'll handle the rest. Discover the finest dining experiences curated specifically for your palate.</p>
+</div>
+</div>
+<!-- Main Content: Preference Capture Form -->
+<main class="relative z-20 -mt-24 px-6 pb-24">
+<div class="max-w-5xl mx-auto">
+<div class="glass-card rounded-[2.5rem] p-8 md:p-16 shadow-[0_32px_64px_rgba(0,0,0,0.08)] border border-white">
+<form class="space-y-12">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
+<!-- Location Input -->
+<section class="space-y-stack-sm">
+<label class="font-label-caps text-on-surface-variant flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-lg" data-icon="location_on">location_on</span>
+                            YOUR LOCATION
+                        </label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border border-outline-variant/30 rounded-2xl px-6 py-5 text-body-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all shadow-sm" placeholder="e.g., Bangalore, India" type="text"/>
+<div class="absolute right-6 top-1/2 -translate-y-1/2 text-primary cursor-pointer">
+<span class="material-symbols-outlined" data-icon="my_location">my_location</span>
+</div>
+</div>
+</section>
+<!-- Budget Toggle -->
+<section class="space-y-stack-sm">
+<label class="font-label-caps text-on-surface-variant flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-lg" data-icon="payments">payments</span>
+                            BUDGET RANGE
+                        </label>
+<div class="flex p-1.5 bg-surface-container-high rounded-2xl h-[68px]">
+<button class="flex-1 py-3 text-base font-semibold rounded-xl bg-white shadow-md text-primary transition-all" type="button">Low</button>
+<button class="flex-1 py-3 text-base font-semibold rounded-xl text-secondary hover:text-on-surface transition-colors" type="button">Medium</button>
+<button class="flex-1 py-3 text-base font-semibold rounded-xl text-secondary hover:text-on-surface transition-colors" type="button">High</button>
+</div>
+</section>
+<!-- Rating Slider -->
+<section class="space-y-stack-sm md:col-span-2">
+<div class="flex justify-between items-center mb-4">
+<label class="font-label-caps text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-lg" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+                                MINIMUM RATING
+                            </label>
+<span class="text-primary font-bold text-2xl">3.5+</span>
+</div>
+<div class="relative w-full h-12 flex items-center px-2">
+<div class="absolute left-2 right-2 h-2 bg-surface-container-highest rounded-full"></div>
+<div class="absolute left-2 w-[70%] h-2 bg-primary rounded-full"></div>
+<div class="absolute left-[70%] -translate-x-1/2 w-8 h-8 bg-white border-4 border-primary rounded-full shadow-xl cursor-pointer hover:scale-110 transition-transform"></div>
+</div>
+</section>
+<!-- Cuisine Multi-select -->
+<section class="space-y-stack-sm md:col-span-2">
+<label class="font-label-caps text-on-surface-variant flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-lg" data-icon="restaurant_menu">restaurant_menu</span>
+                            FAVORITE CUISINES
+                        </label>
+<div class="flex flex-wrap gap-4">
+<button class="px-8 py-3.5 rounded-full bg-primary text-white font-semibold text-base shadow-lg hover:shadow-primary/20 transition-all active:scale-95" type="button">Italian</button>
+<button class="px-8 py-3.5 rounded-full bg-surface-container-highest text-on-surface-variant font-medium text-base hover:bg-secondary-container transition-all active:scale-95" type="button">North Indian</button>
+<button class="px-8 py-3.5 rounded-full bg-primary text-white font-semibold text-base shadow-lg hover:shadow-primary/20 transition-all active:scale-95" type="button">Chinese</button>
+<button class="px-8 py-3.5 rounded-full bg-surface-container-highest text-on-surface-variant font-medium text-base hover:bg-secondary-container transition-all active:scale-95" type="button">Japanese</button>
+<button class="px-8 py-3.5 rounded-full bg-surface-container-highest text-on-surface-variant font-medium text-base hover:bg-secondary-container transition-all active:scale-95" type="button">Mediterranean</button>
+<button class="px-8 py-3.5 rounded-full bg-surface-container-highest text-on-surface-variant font-medium text-base hover:bg-secondary-container transition-all active:scale-95" type="button">French</button>
+<button class="px-8 py-3.5 rounded-full bg-surface-container-highest text-on-surface-variant font-medium text-base hover:bg-secondary-container transition-all active:scale-95" type="button">Mexican</button>
+</div>
+</section>
+<!-- Vibe & Occasion -->
+<section class="space-y-stack-sm md:col-span-2">
+<label class="font-label-caps text-on-surface-variant flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-lg" data-icon="loyalty">loyalty</span>
+                            VIBE &amp; OCCASION
+                        </label>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+<button class="flex flex-col items-center justify-center p-8 rounded-2xl border-2 border-primary bg-primary/5 text-on-surface font-semibold gap-3 transition-all" type="button">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="family_restroom">family_restroom</span>
+<span>Family-friendly</span>
+<span class="material-symbols-outlined text-primary text-xl absolute top-4 right-4" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</button>
+<button class="flex flex-col items-center justify-center p-8 rounded-2xl border border-outline-variant/30 bg-white text-on-surface-variant hover:border-primary/50 transition-all gap-3" type="button">
+<span class="material-symbols-outlined text-3xl" data-icon="favorite">favorite</span>
+<span>Romantic</span>
+</button>
+<button class="flex flex-col items-center justify-center p-8 rounded-2xl border border-outline-variant/30 bg-white text-on-surface-variant hover:border-primary/50 transition-all gap-3" type="button">
+<span class="material-symbols-outlined text-3xl" data-icon="work">work</span>
+<span>Business</span>
+</button>
+<button class="flex flex-col items-center justify-center p-8 rounded-2xl border border-outline-variant/30 bg-white text-on-surface-variant hover:border-primary/50 transition-all gap-3" type="button">
+<span class="material-symbols-outlined text-3xl" data-icon="local_bar">local_bar</span>
+<span>Nightlife</span>
+</button>
+</div>
+</section>
+</div>
+<!-- Submit Button Area -->
+<div class="pt-8 flex justify-center">
+<button class="w-full md:w-auto min-w-[300px] h-20 bg-primary text-white rounded-2xl flex items-center justify-center gap-4 shadow-[0_20px_40px_rgba(183,20,34,0.3)] hover:brightness-110 hover:-translate-y-1 active:scale-95 transition-all text-xl font-bold px-12" type="submit">
+                        Find Best Matches
+                        <span class="material-symbols-outlined text-2xl" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+</main>
+<footer class="bg-white border-t border-zinc-200 py-12 px-6">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="restaurant">restaurant</span>
+<span class="text-xl font-black text-red-500 italic tracking-tighter">Reco Partner</span>
+</div>
+<p class="text-on-surface-variant text-sm">© 2024 Reco Partner. All rights reserved. Your ultimate dining companion.</p>
+<div class="flex gap-6">
+<a class="text-on-surface-variant hover:text-primary transition-colors text-sm font-medium" href="#">Terms</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-sm font-medium" href="#">Privacy</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors text-sm font-medium" href="#">Contact</a>
+</div>
+</div>
+</footer>
+</body></html>
