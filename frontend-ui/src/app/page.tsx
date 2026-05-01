@@ -1,15 +1,28 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PreferenceForm from "@/components/PreferenceForm";
 import RecommendationList from "@/components/RecommendationList";
-import { PreferenceRequest, ContractResponse, fetchRecommendations } from "@/lib/api";
+import { PreferenceRequest, ContractResponse, fetchRecommendations, fetchLocations } from "@/lib/api";
 import { AlertCircle } from "lucide-react";
 
 export default function Home() {
     const [isLoading, setIsLoading] = useState(false);
     const [response, setResponse] = useState<ContractResponse | null>(null);
     const [error, setError] = useState<string | null>(null);
+    const [locations, setLocations] = useState<string[]>([]);
+
+    useEffect(() => {
+        const loadLocations = async () => {
+            try {
+                const locs = await fetchLocations();
+                setLocations(locs);
+            } catch (err) {
+                console.error("Failed to load locations", err);
+            }
+        };
+        loadLocations();
+    }, []);
 
     const handleSearch = async (request: PreferenceRequest) => {
         setIsLoading(true);
@@ -23,6 +36,7 @@ export default function Home() {
             setIsLoading(false);
         }
     };
+
 
     return (
         <div className="relative">
@@ -49,8 +63,9 @@ export default function Home() {
 
             {/* Form Overlay Section */}
             <div className="container mx-auto px-6 -mt-32 relative z-20 pb-24">
-                <PreferenceForm onSubmit={handleSearch} isLoading={isLoading} />
+                <PreferenceForm onSubmit={handleSearch} isLoading={isLoading} locations={locations} />
             </div>
+
 
             {/* Results Section */}
             {(response || error || isLoading) && (

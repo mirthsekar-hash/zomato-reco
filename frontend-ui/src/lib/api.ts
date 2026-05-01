@@ -25,8 +25,17 @@ export interface ContractResponse {
     meta: Record<string, any>;
 }
 
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+
+export async function fetchLocations(): Promise<string[]> {
+    const response = await fetch(`${API_BASE_URL}/api/v1/locations`);
+    if (!response.ok) throw new Error('Failed to fetch locations');
+    const data = await response.json();
+    return data.locations;
+}
+
 export async function fetchRecommendations(request: PreferenceRequest): Promise<ContractResponse> {
-    const response = await fetch('/api/v1/recommendations', {
+    const response = await fetch(`${API_BASE_URL}/api/v1/recommendations`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -38,10 +47,15 @@ export async function fetchRecommendations(request: PreferenceRequest): Promise<
         let errorMsg = 'Failed to fetch recommendations';
         try {
             const errorData = await response.json();
-            if (errorData.error) errorMsg = errorData.error;
+            if (errorData.detail) {
+                errorMsg = typeof errorData.detail === 'string' ? errorData.detail : JSON.stringify(errorData.detail);
+            } else if (errorData.error) {
+                errorMsg = errorData.error;
+            }
         } catch(e) {}
         throw new Error(errorMsg);
     }
 
     return response.json();
 }
+

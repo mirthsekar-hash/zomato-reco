@@ -16,9 +16,10 @@ import { PreferenceRequest } from "@/lib/api";
 interface PreferenceFormProps {
     onSubmit: (request: PreferenceRequest) => void;
     isLoading: boolean;
+    locations: string[];
 }
 
-export default function PreferenceForm({ onSubmit, isLoading }: PreferenceFormProps) {
+export default function PreferenceForm({ onSubmit, isLoading, locations }: PreferenceFormProps) {
     const [location, setLocation] = useState("");
     const [budget, setBudget] = useState("low");
     const [selectedCuisines, setSelectedCuisines] = useState<string[]>(["Italian", "Chinese"]);
@@ -66,26 +67,10 @@ export default function PreferenceForm({ onSubmit, isLoading }: PreferenceFormPr
                             className="w-full bg-[#F5F5F5] border-none rounded-2xl px-6 py-5 text-text-primary placeholder:text-text-muted focus:ring-2 focus:ring-reco-red transition-all appearance-none cursor-pointer"
                         >
                             <option value="" disabled>Select a location</option>
-                            <option value="Banashankari">Banashankari</option>
-                            <option value="Banaswadi">Banaswadi</option>
-                            <option value="Bannerghatta Road">Bannerghatta Road</option>
-                            <option value="Basavanagudi">Basavanagudi</option>
-                            <option value="Bellandur">Bellandur</option>
-                            <option value="BTM">BTM Layout</option>
-                            <option value="Electronic City">Electronic City</option>
-                            <option value="Frazer Town">Frazer Town</option>
-                            <option value="HSR">HSR Layout</option>
-                            <option value="Indiranagar">Indiranagar</option>
-                            <option value="Jayanagar">Jayanagar</option>
-                            <option value="JP Nagar">JP Nagar</option>
-                            <option value="Kalyan Nagar">Kalyan Nagar</option>
-                            <option value="Koramangala 5th Block">Koramangala 5th Block</option>
-                            <option value="Malleshwaram">Malleshwaram</option>
-                            <option value="Marathahalli">Marathahalli</option>
-                            <option value="New BEL Road">New BEL Road</option>
-                            <option value="Rajajinagar">Rajajinagar</option>
-                            <option value="Sarjapur Road">Sarjapur Road</option>
-                            <option value="Whitefield">Whitefield</option>
+                            {locations.map((loc) => (
+                                <option key={loc} value={loc}>{loc}</option>
+                            ))}
+
                         </select>
                         <Compass className="absolute right-6 top-1/2 -translate-y-1/2 text-reco-red pointer-events-none" size={20} />
                     </div>
