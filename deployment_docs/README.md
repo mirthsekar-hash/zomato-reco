@@ -2,7 +2,7 @@
 
 This directory contains instructions and references for deploying the Reco Partner application with a split architecture:
 
-- **Backend**: Python (FastAPI) deployed on [Render](https://render.com)
+- **Backend**: Python (FastAPI) deployed on [Railway](https://railway.app)
 - **Frontend**: Next.js (TypeScript) deployed on [Vercel](https://vercel.com)
 
 ## Architecture Overview
@@ -13,7 +13,8 @@ The application is split into two independent services:
 
 ## Documentation Index
 
-1. [Render Backend Setup](./render_setup.md)
+1. [Railway Backend Setup](./railway_setup.md)
+
 2. [Vercel Frontend Setup](./vercel_setup.md)
 3. [API Reference](./api_reference.md)
 4. [Environment Variables](./env_vars.md)

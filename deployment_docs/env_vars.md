@@ -2,13 +2,14 @@
 
 A summary of all environment variables required for the Reco Partner stack.
 
-## Backend (Render)
+## Backend (Railway)
 
 | Variable | Required | Description | Example |
 | :--- | :--- | :--- | :--- |
 | `GROQ_API_KEY` | **Yes** | Your API key for Groq LLM. | `gsk_...` |
-| `PORT` | No | Port for the FastAPI server (Set by Render). | `10000` |
+| `PORT` | No | Port for the FastAPI server (Set by Railway). | `8000` |
 | `PYTHON_VERSION` | No | Specifies Python version to use. | `3.10.0` |
+
 
 ---
 

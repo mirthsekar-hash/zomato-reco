@@ -16,8 +16,9 @@ Vercel is used to host the Next.js frontend.
 
 3. **Environment Variables**:
    In the **Environment Variables** section, add:
-   - `NEXT_PUBLIC_API_URL`: The URL of your deployed Render backend (e.g., `https://reco-partner-backend.onrender.com`).
+   - `NEXT_PUBLIC_API_URL`: The URL of your deployed Railway backend (e.g., `https://reco-partner-backend.up.railway.app`).
      - *Note*: Ensure there is **no trailing slash** at the end of the URL.
+
 
 4. **Deploy**:
    Click **Deploy**. Vercel will build your app and provide a production URL.
